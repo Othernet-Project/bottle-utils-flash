@@ -3,18 +3,23 @@ from setuptools import setup, find_packages
 
 import bottle_utils
 
+
 def read(fname):
     """ Return content of specified file """
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+
 VERSION = bottle_utils.__version__
+MAJOR = '0.3'
+NEXT = '0.4'
 
 setup(
     name='bottle-utils-flash',
     version=VERSION,
     author='Outernet Inc',
     author_email='branko@outernet.is',
-    description='Flash message utilities for developing apps with Bottle web framework',
+    description=('Flash message utilities for developing apps with Bottle web '
+                 'framework'),
     license='BSD',
     keywords='bottle utils flash',
     url='http://outernet-project.github.io/bottle-utils/',
@@ -22,8 +27,8 @@ setup(
     long_description=read('README.rst'),
     install_requires=[
         'bottle==0.12.7',
-        'bottle-utils-common==%s' % VERSION,
-        'bottle-utils-lazy==%s' % VERSION,
+        'bottle-utils-common >=%s, <%s' % (MAJOR, NEXT),
+        'bottle-utils-lazy >=%s, <%s' % (MAJOR, NEXT),
     ],
     classifiers=[
         'Development Status :: 3 - Alpha',
